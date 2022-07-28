@@ -1,0 +1,71 @@
+:root{
+  --main: #171717;
+  --main-bg: #444444;
+  --main-progress: #DA0037;
+  --main-body-color: #EDEDED;
+}
+
+body{
+  background-color: var(--main-body-color);
+}
+
+header{
+  height: min-content;
+}
+
+main{
+  display: flex;
+  justify-content: center;
+}
+
+h2{
+  color: white;
+}
+
+#cpu{
+  margin-top: 5px;
+  width: 30%;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  transform: rotate(-90deg);
+}
+
+
+div#offcanvasAlgoritmo{
+  width: 20%;
+}
+
+.menu-btn{
+  filter: invert(1);
+  width: 24px;
+  height: 24px;
+}
+
+.dropdown-toggle::after{
+  display: none;
+}
+
+
+.progress{
+  background: none;
+  width: 50%;
+  height: 25px;
+  margin: 3%;
+}
+
+.progress-bar{
+  background-color: var(--main-progress);
+}
+
+footer{
+  display: flex;
+  justify-content: center;
+}
+
+footer img {
+  filter: brightness(#171717);
+  width: 80px;
+}
