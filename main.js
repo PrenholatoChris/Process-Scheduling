@@ -9,7 +9,7 @@ async function createQueue(qtd){
       await new Promise(r => setTimeout(r, 3000));
     }
     let time = createProcess()
-    time = Math.random()*((time*10))// -100) + 500
+    time = Math.random()*((time*10) -100)// + 500
     await new Promise(r => setTimeout(r, time));
   }
 }
@@ -38,11 +38,10 @@ async function Algorithm(method){
     }
   }
   else if(method =="rr"){
-    while(cpu.children.length>= 1){
+    while(cpu.children.length > 0){
       console.log(cpu.children.length)
-      for(let i=0;i<=cpu.children.length;i+=1){
+      for(let i=0;i < cpu.children.length;i+=1){
         let retorno = await runProcess(i,20)
-        continue
       }
     }
 

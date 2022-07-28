@@ -1,4 +1,5 @@
 export async function runProcess(index, timeProcessing) {
+  // print(cpu.children[index])
   let now = cpu.children[index].children[0]
   const percent = parseInt(now.style.width.replace("%",""))
   
