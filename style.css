@@ -44,20 +44,26 @@ div#offcanvasAlgoritmo{
   height: 24px;
 }
 
-.dropdown-toggle::after{
+/* .dropdown-toggle::after{
   display: none;
-}
+} */
 
 
 .progress{
-  background: none;
-  width: 50%;
-  height: 25px;
-  margin: 3%;
+  height: 30px;
+  margin: 8px;
 }
 
 .progress-bar{
   background-color: var(--main-progress);
+}
+
+#cpu span{
+  transform: rotate(90deg);
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+  align-self: center;
 }
 
 footer{

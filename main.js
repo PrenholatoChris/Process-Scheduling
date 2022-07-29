@@ -1,15 +1,17 @@
 import {runProcess, createProcess, removeProcess} from './basicFunctions.js'
 
 var cpu = document.getElementById("cpu")
-let method = 'fifo'
+var method = 'fifo'
+var speed = 20
 
 async function createQueue(qtd){
+  createProcess()
   for(let i=0; i<=qtd; i+=1){
-    if(cpu.children.length>=11){
-      await new Promise(r => setTimeout(r, 3000));
-    }
+    // if(cpu.children.length>=11){
+    //   await new Promise(r => setTimeout(r, 3000));
+    // }
     let time = createProcess()
-    time = Math.random()*((time*10) -100)// + 500
+    time = Math.random()*((time*speed)-400) + 400// + 500
     await new Promise(r => setTimeout(r, time));
   }
 }
@@ -18,7 +20,7 @@ async function Algorithm(method){
   createQueue(20)
   if(method=="fifo"){
     while(cpu.children.length >= 1){
-      await runProcess(0,100)
+      await runProcess(0,100,speed)
     }
   }
 
@@ -34,14 +36,15 @@ async function Algorithm(method){
           index = i
         }
       }
-      await runProcess(index,100)
+      await runProcess(index,100,speed)
     }
   }
   else if(method =="rr"){
     while(cpu.children.length > 0){
-      console.log(cpu.children.length)
       for(let i=0;i < cpu.children.length;i+=1){
-        let retorno = await runProcess(i,20)
+        if(await runProcess(i,20,speed)){
+          i-=1
+        }
       }
     }
 
@@ -53,11 +56,16 @@ var startBtn = document.getElementById("run").onclick = () => {
 }
 
 var plusBtn = document.getElementById("plus").onclick = ()=>{
-  createProcess()
+  speed -= 2
+  let id = document.getElementById("speed")
+  console.log(id)
+  id.innerHTML = `Speed: ${speed}`
 }
 
 var minusBtn = document.getElementById("minus").onclick = () => {
-  removeProcess()
+  speed += 2
+  let id = document.getElementById("speed")
+  id.innerHTML = `Speed: ${speed}`
 }
 
 
@@ -73,7 +81,6 @@ methods.onclick = (event) => {
   const btn = event.path[0]
   btn.className += " active"
   method = (btn.id)
-  console.log(method)
 }
 
 

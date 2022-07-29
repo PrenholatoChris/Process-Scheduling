@@ -15,7 +15,7 @@
     <h1 class="text-center mb-3">Escalonamento de Processos</h1>
   </header>
 
-  <main class="d-flex flex-wrap justify-content-around">
+  <main class="d-flex flex-wrap wrap justify-content-around">
     <aside>
       <a class="btn btn-dark" data-bs-toggle="offcanvas" href="#offcanvasAlgoritmo" role="button" aria-controls="offcanvasExample">
         <img class="menu-btn" src="./src/list.svg" alt="">
@@ -53,7 +53,6 @@
     
 
     <section id="cpu" class="bg-dark ">
-      <div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="97" style="width: 97%"></div></div>
     </section>
 
     <aside>
@@ -76,6 +75,9 @@
     
   </main>
 
+  <section class="text-center">
+    <h1 id="speed">Speed: 20</h1>
+  </section>
   <footer class="d-flex justify-content-center gap-5">
     <button id="run"><img src="src/play.png" alt=""></button>
     <button id="pause"><img src="src/pause.png" alt=""></button>
