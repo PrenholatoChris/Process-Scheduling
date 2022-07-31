@@ -97,16 +97,22 @@ async function Algorithm(method){
 
 
 var startBtn = document.getElementById("run").onclick = () => {
+  document.getElementById("run").disabled = true
+  document.getElementById("pause").disabled = false
   start()
   Algorithm(method)
 
 }
-var pauseBtn = document.getElementById("pause").onclick = ()=> {
+
+function resetCPU(){
+  document.getElementById("run").disabled = false
   cpu.innerHTML = ""
   count = 0
   updateCount(count)
   pause()
 }
+
+var pauseBtn = document.getElementById("pause").onclick = ()=>{resetCPU()}
 
 var plusBtn = document.getElementById("plus").onclick = ()=>{
   speed -= 2
@@ -122,6 +128,7 @@ var minusBtn = document.getElementById("minus").onclick = () => {
 
 const methods = document.getElementById("algorithms")
 methods.onclick = (event) => {
+  resetCPU()
   const list = document.getElementById("algorithms").children
   for(const elem of list){
     if(elem.className.includes("active")){
