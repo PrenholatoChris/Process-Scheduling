@@ -17,7 +17,7 @@ export async function runProcess(index, percentToProcess, speed) {
   for (let i = percent; i >= value; i-=1){
     ariaValueNow.textContent = i
     percentBar.style.width = `${(i/percentMax)*100}%`
-    percentBar.innerHTML = `<span>${i}%</span>` 
+    percentBar.innerHTML = `<span>${(i/percentMax)*100}%</span>` 
     await new Promise(r => setTimeout(r, speed));
   }
 
