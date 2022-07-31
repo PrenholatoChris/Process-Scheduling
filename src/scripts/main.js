@@ -58,7 +58,7 @@ async function Algorithm(method){
           index = i
         }
       }
-      if(await runProcess(index,20,speed)){
+      if(await runProcess(index,10,speed)){
         updateCount(++count)
       }
     }
@@ -103,7 +103,8 @@ var startBtn = document.getElementById("run").onclick = () => {
 }
 var pauseBtn = document.getElementById("pause").onclick = ()=> {
   cpu.innerHTML = ""
-  updateCount(0)
+  count = 0
+  updateCount(count)
   pause()
 }
 
