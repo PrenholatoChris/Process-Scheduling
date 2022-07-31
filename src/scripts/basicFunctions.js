@@ -1,8 +1,11 @@
 export async function runProcess(index, percentToProcess, speed) {
   let bar = document.getElementsByClassName("progress")[index]
-  // const test = (bar.children[0].attributes[3].textContent)
-  // console.log(test)
-  const percent = parseInt(bar.style.width.replace("%",""))
+  let ariaValueNow = bar.children[0].attributes[3]
+  const percent = parseInt(ariaValueNow.textContent)
+  const percentMax = parseInt(bar.children[0].attributes[5].textContent)
+  console.log(percentMax)
+
+  // const percent = parseInt(bar.style.width.replace("%",""))
   
   var value = 0
   if(percent > percentToProcess){
@@ -12,7 +15,8 @@ export async function runProcess(index, percentToProcess, speed) {
   let percentBar = bar.children[0]
   percentBar.style.backgroundColor = `cadetblue`
   for (let i = percent; i >= value; i-=1){
-    percentBar.style.width = `${i}%`
+    ariaValueNow.textContent = i
+    percentBar.style.width = `${(i/percentMax)*100}%`
     percentBar.innerHTML = `<span>${i}%</span>` 
     await new Promise(r => setTimeout(r, speed));
   }
@@ -38,7 +42,7 @@ export function createProcess(){
   const Bar = document.createElement('div')
   Bar.className = "col"
   Bar.innerHTML = `<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" 
-  aria-label="Animated striped example" aria-valuenow="${max}" aria-valuemin="0" aria-valuemax="${100}" style="width: 
+  aria-label="Animated striped example" aria-valuenow="${max}" aria-valuemin="0" aria-valuemax="${max}" style="width: 
   ${100}%"><span>${100}%</span></div></div>`
   Bar.children[0].style.width = `${max}%`
 
