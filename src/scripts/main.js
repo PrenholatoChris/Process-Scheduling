@@ -9,7 +9,6 @@ var count = 0
 async function createQueue(){
   createProcess()
   while(cpu.children.length >= 1){
-    console.log(cpu.children.length)
     if(cpu.children.length>=11){
       await new Promise(r => setTimeout(r, 2000));
     }

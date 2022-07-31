@@ -3,7 +3,6 @@ export async function runProcess(index, percentToProcess, speed) {
   let ariaValueNow = bar.children[0].attributes[3]
   const percent = parseInt(ariaValueNow.textContent)
   const percentMax = parseInt(bar.children[0].attributes[5].textContent)
-  console.log(percentMax)
 
   // const percent = parseInt(bar.style.width.replace("%",""))
   
@@ -16,8 +15,8 @@ export async function runProcess(index, percentToProcess, speed) {
   percentBar.style.backgroundColor = `cadetblue`
   for (let i = percent; i >= value; i-=1){
     ariaValueNow.textContent = i
-    percentBar.style.width = `${(i/percentMax)*100}%`
-    percentBar.innerHTML = `<span>${(i/percentMax)*100}%</span>` 
+    percentBar.style.width = `${parseInt((i/percentMax)*100)}%`
+    percentBar.innerHTML = `<span>${parseInt((i/percentMax)*100)}%</span>` 
     await new Promise(r => setTimeout(r, speed));
   }
 
