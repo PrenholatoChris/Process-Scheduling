@@ -47,6 +47,25 @@ async function Algorithm(method){
       }
     }
   }
+  else if(method=="str"){
+    while(cpu.children.length >= 1){
+      let shortest = 101
+      let index = 0
+
+      for(let i=0;i < cpu.children.length; i+=1){
+        let value = parseInt(document.getElementsByClassName("progress")[i].children[0].attributes[3].textContent)
+        if( value < shortest){
+          shortest = value 
+          index = i
+        }
+      }
+      if(await runProcess(index,20,speed)){
+        updateCount(++count)
+      }
+    }
+
+  }
+
   else if(method =="rr"){
     while(cpu.children.length > 0){
       for(let i=0;i < cpu.children.length;i+=1){
