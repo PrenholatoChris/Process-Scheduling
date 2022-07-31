@@ -1,17 +1,17 @@
-export async function runProcess(index, timeProcessing, speed) {
+export async function runProcess(index, percentToProcess, speed) {
   let bar = document.getElementsByClassName("progress")[index]
-  let percentBar = bar.children[0]
-  const percent = parseInt(percentBar.style.width.replace("%",""))
+  // const test = (bar.children[0].attributes[3].textContent)
+  // console.log(test)
+  const percent = parseInt(bar.style.width.replace("%",""))
   
-  percentBar.style.backgroundColor = `cadetblue`
-
   var value = 0
-  if(percent > timeProcessing){
-    value = percent-timeProcessing
+  if(percent > percentToProcess){
+    value = percent-percentToProcess
   }
   
+  let percentBar = bar.children[0]
+  percentBar.style.backgroundColor = `cadetblue`
   for (let i = percent; i >= value; i-=1){
-    
     percentBar.style.width = `${i}%`
     percentBar.innerHTML = `<span>${i}%</span>` 
     await new Promise(r => setTimeout(r, speed));
@@ -19,7 +19,7 @@ export async function runProcess(index, timeProcessing, speed) {
 
   percentBar.style.backgroundColor = `var(--main-progress)`
 
-  if(percentBar.style.width == '0%'){
+  if(percentBar.style.width == '0%' && document.getElementById("cpu").children.length > 0){
     cpu.children[index].remove()
     return true
   }
@@ -28,7 +28,7 @@ export async function runProcess(index, timeProcessing, speed) {
 
 export function createProcess(){
   const max = Math.floor(Math.random() * (100-20) ) + 20
-  const priority = (parseInt(Math.random()*(20+20)) -20)
+  const priority = (parseInt(Math.random()*(19-(-20))) -20)
 
   const priorityHTML = document.createElement('span')
   priorityHTML.innerHTML = priority
@@ -38,7 +38,7 @@ export function createProcess(){
   const Bar = document.createElement('div')
   Bar.className = "col"
   Bar.innerHTML = `<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" 
-  aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="${100}" style="width: 
+  aria-label="Animated striped example" aria-valuenow="${max}" aria-valuemin="0" aria-valuemax="${100}" style="width: 
   ${100}%"><span>${100}%</span></div></div>`
   Bar.children[0].style.width = `${max}%`
 

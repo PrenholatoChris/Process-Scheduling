@@ -18,7 +18,7 @@
   <main class="d-flex flex-wrap wrap justify-content-around">
     <aside>
       <a class="btn btn-dark" data-bs-toggle="offcanvas" href="#offcanvasAlgoritmo" role="button" aria-controls="offcanvasExample">
-        <img class="menu-btn" src="./src/list.svg" alt="">
+        <img class="menu-btn" src="./src/images/list.svg" alt="">
       </a>
       
       <div class="offcanvas offcanvas-start InfoProcesso" tabindex="-1" id="offcanvasAlgoritmo" data-bs-backdrop="false" aria-labelledby="offcanvasExampleLabel">
@@ -58,7 +58,7 @@
     <aside>
       <p>
         <button class="btn btn-dark dropstart" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
-            <img class="menu-btn" src="./src/info-circle.svg" alt="">
+            <img class="menu-btn" src="./src/images/info-circle.svg" alt="">
             <!-- fazer um ID para cada metodo que vai ser mostrado -->
         </button>
       </p>
@@ -75,14 +75,32 @@
     
   </main>
 
+  <section class="text-center container">
+    <div class="row justify-content-center">
+      <div class="col">
+        <span>Time Processing: </span><span id="minute">00</span>:<span id="second">00</span>
+      </div>
+      <div class="col">
+        <span>Process Completed:</span>
+        <span id="count">0</span>
+      </div>
+      <div class="col">
+        <span>Process Per Second:</span>
+        <span id="processPerSecond">0</span>
+  
+      </div>
+    </div>
+
+  </section>
+
   <section class="text-center">
     <h1 id="speed">Speed: 20</h1>
   </section>
   <footer class="d-flex justify-content-center gap-5">
-    <button id="run"><img src="src/play.png" alt=""></button>
-    <button id="pause"><img src="src/pause.png" alt=""></button>
-    <button id="plus"><img src="src/plus.png" alt=""></button>
-    <button id="minus" ><img src="src/minus.png" alt=""></button>
+    <button id="run"><img src="src/images/play.png" alt=""></button>
+    <button id="pause"><img src="src/images/pause.png" alt=""></button>
+    <button id="plus"><img src="src/images/plus.png" alt=""></button>
+    <button id="minus" ><img src="src/images/minus.png" alt=""></button>
   </footer>
 
 
@@ -90,7 +108,7 @@
     integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
     crossorigin="anonymous"></script>
 
-  <script type="module" src="main.js"></script>
+  <script type="module" src="./src/scripts/main.js"></script>
 </body>
 
 </html>
