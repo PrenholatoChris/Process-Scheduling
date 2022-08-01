@@ -7,6 +7,7 @@
 
 body{
   background-color: var(--main-body-color);
+  
 }
 
 header{
@@ -14,8 +15,7 @@ header{
 }
 
 main{
-  display: flex;
-  justify-content: center;
+  width: 100%;
 }
 
 h2{
@@ -23,7 +23,8 @@ h2{
 }
 
 #cpu{
-  margin-top: 5px;
+  position: relative;
+  top: 0px;
   width: 30%;
   height: 70vh;
   display: flex;
@@ -31,10 +32,20 @@ h2{
   align-items: center;
   justify-content: flex-start;
   transform: rotate(-90deg);
+  left: -5%;
 }
 
-div#offcanvasAlgoritmo{
-  width: 20%;
+.AlgorithmMethod.offcanvas.offcanvas-start{
+  left: 0px;
+}
+
+.InfoProcesso.offcanvas.offcanvas-start{
+  left:auto;
+  right: 0px;
+}
+
+.offcanvas{
+  /* transition: none; */
 }
 
 .menu-btn{
@@ -42,11 +53,6 @@ div#offcanvasAlgoritmo{
   width: 24px;
   height: 24px;
 }
-
-/* .dropdown-toggle::after{
-  display: none;
-} */
-
 
 .progress{
   height: 30px;
@@ -72,5 +78,5 @@ footer{
 
 footer img {
   filter: brightness(#171717);
-  width: 80px;
+  width: 60px;
 }

@@ -1,5 +1,6 @@
-import {runProcess, createProcess, removeProcess} from './basicFunctions.js'
+import { runProcess, createProcess, removeProcess} from './basicFunctions.js'
 import { start, pause, updateCount } from './clock.js'
+import { changeAlgorithmInfo } from './algorithmInfo.js'
 
 var cpu = document.getElementById("cpu")
 var method = 'fifo'
@@ -115,16 +116,18 @@ function resetCPU(){
 var pauseBtn = document.getElementById("pause").onclick = ()=>{resetCPU()}
 
 var plusBtn = document.getElementById("plus").onclick = ()=>{
-  speed -= 2
+  speed -= 5
   let id = document.getElementById("speed")
   id.innerHTML = `Speed: ${speed}`
 }
 
 var minusBtn = document.getElementById("minus").onclick = () => {
-  speed += 2
+  speed += 5
   let id = document.getElementById("speed")
   id.innerHTML = `Speed: ${speed}`
 }
+
+changeAlgorithmInfo(method)
 
 const methods = document.getElementById("algorithms")
 methods.onclick = (event) => {
@@ -139,4 +142,5 @@ methods.onclick = (event) => {
   const btn = event.target
   btn.className += " active"
   method = (btn.id)
+  changeAlgorithmInfo(method)
 }

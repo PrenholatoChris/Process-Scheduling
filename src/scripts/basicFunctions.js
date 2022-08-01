@@ -4,8 +4,7 @@ export async function runProcess(index, percentToProcess, speed) {
   const percent = parseInt(ariaValueNow.textContent)
   const percentMax = parseInt(bar.children[0].attributes[5].textContent)
 
-  // const percent = parseInt(bar.style.width.replace("%",""))
-  
+  20, 100 
   var value = 0
   if(percent > percentToProcess){
     value = percent-percentToProcess
@@ -19,7 +18,6 @@ export async function runProcess(index, percentToProcess, speed) {
     percentBar.innerHTML = `<span>${parseInt((i/percentMax)*100)}%</span>` 
     await new Promise(r => setTimeout(r, speed));
   }
-
   percentBar.style.backgroundColor = `var(--main-progress)`
 
   if(percentBar.style.width == '0%' && document.getElementById("cpu").children.length > 0){
