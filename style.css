@@ -44,10 +44,6 @@ h2{
   right: 0px;
 }
 
-.offcanvas{
-  /* transition: none; */
-}
-
 .menu-btn{
   filter: invert(1);
   width: 24px;
