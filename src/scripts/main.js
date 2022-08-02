@@ -4,7 +4,7 @@ import { changeAlgorithmInfo } from './algorithmInfo.js'
 
 var cpu = document.getElementById("cpu")
 var method = 'fifo'
-var speed = 20
+var time = 20
 var count = 0 
 
 async function createQueue(){
@@ -13,9 +13,9 @@ async function createQueue(){
     if(cpu.children.length>=11){
       await new Promise(r => setTimeout(r, 2000));
     }
-    let time = createProcess()
-    time = Math.random()*((time*speed)-400) + 400// + 500
-    await new Promise(r => setTimeout(r, time));
+    let timeToProcess = createProcess()
+    timeToProcess = Math.random()*((timeToProcess * time) -400) + 400// + 500
+    await new Promise(r => setTimeout(r, timeToProcess));
   }
 }
 
@@ -24,7 +24,7 @@ async function Algorithm(method){
   createQueue()
   if(method=="fifo"){
     while(cpu.children.length >= 1){
-      if(await runProcess(0,100,speed)){
+      if(await runProcess(0,100,time)){
         updateCount(++count)
       }
     }
@@ -42,7 +42,7 @@ async function Algorithm(method){
           index = i
         }
       }
-      if(await runProcess(index,100,speed)){
+      if(await runProcess(index,100,time)){
         updateCount(++count)
       }
     }
@@ -59,7 +59,7 @@ async function Algorithm(method){
           index = i
         }
       }
-      if(await runProcess(index,10,speed)){
+      if(await runProcess(index,10,time)){
         updateCount(++count)
       }
     }
@@ -69,7 +69,7 @@ async function Algorithm(method){
   else if(method =="rr"){
     while(cpu.children.length > 0){
       for(let i=0;i < cpu.children.length;i+=1){
-        if(await runProcess(i,20,speed)){
+        if(await runProcess(i,20,time)){
           i-=1
           updateCount(++count)
         }
@@ -88,7 +88,7 @@ async function Algorithm(method){
           index = i
         }
       }
-      if(await runProcess(index,100,speed)){
+      if(await runProcess(index,100,time)){
         updateCount(++count)
       }
     }
@@ -116,15 +116,15 @@ function resetCPU(){
 var pauseBtn = document.getElementById("pause").onclick = ()=>{resetCPU()}
 
 var plusBtn = document.getElementById("plus").onclick = ()=>{
-  speed -= 5
-  let id = document.getElementById("speed")
-  id.innerHTML = `Speed: ${speed}`
+  time -= 5
+  let id = document.getElementById("time")
+  id.innerHTML = `Time: ${time}`
 }
 
 var minusBtn = document.getElementById("minus").onclick = () => {
-  speed += 5
-  let id = document.getElementById("speed")
-  id.innerHTML = `Speed: ${speed}`
+  time += 5
+  let id = document.getElementById("time")
+  id.innerHTML = `Time: ${time}`
 }
 
 changeAlgorithmInfo(method)

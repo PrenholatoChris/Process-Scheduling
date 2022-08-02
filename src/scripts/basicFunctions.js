@@ -1,22 +1,21 @@
-export async function runProcess(index, percentToProcess, speed) {
+export async function runProcess(index, percentToProcess, time) {
   let bar = document.getElementsByClassName("progress")[index]
   let ariaValueNow = bar.children[0].attributes[3]
   const percent = parseInt(ariaValueNow.textContent)
   const percentMax = parseInt(bar.children[0].attributes[5].textContent)
 
-  20, 100 
+
   var value = 0
   if(percent > percentToProcess){
     value = percent-percentToProcess
   }
-  
+
   let percentBar = bar.children[0]
   percentBar.style.backgroundColor = `cadetblue`
-  for (let i = percent; i >= value; i-=1){
-    ariaValueNow.textContent = i
+  for (let i = percent; i >= 0; i-= 1){
     percentBar.style.width = `${parseInt((i/percentMax)*100)}%`
     percentBar.innerHTML = `<span>${parseInt((i/percentMax)*100)}%</span>` 
-    await new Promise(r => setTimeout(r, speed));
+    await new Promise(r => setTimeout(r, time));
   }
   percentBar.style.backgroundColor = `var(--main-progress)`
 
