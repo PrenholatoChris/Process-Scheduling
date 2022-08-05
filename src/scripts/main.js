@@ -7,21 +7,22 @@ var method = 'fifo'
 var time = 20
 var count = 0 
 
-async function createQueue(){
-  createProcess()
+async function createQueue(method){
+
+
+  createProcess(method)
   while(cpu.children.length >= 1){
     if(cpu.children.length>=11){
       await new Promise(r => setTimeout(r, 2000));
     }
-    let timeToProcess = createProcess()
+    let timeToProcess = createProcess(method)
     timeToProcess = Math.random()*((timeToProcess * time) -400) + 400// + 500
     await new Promise(r => setTimeout(r, timeToProcess));
   }
 }
 
 async function Algorithm(method){
-
-  createQueue()
+  createQueue(method)
   if(method=="fifo"){
     while(cpu.children.length >= 1){
       if(await runProcess(0,100,time)){
@@ -75,14 +76,15 @@ async function Algorithm(method){
         }
       }
     }
-
   }
+  
   else if(method == "pr"){
     while(cpu.children.length > 0){
+      let prioritys = document.getElementsByClassName("priority")
       let priority = 20
       let index = 0
       for (let i = 0; i < cpu.children.length; i++) {
-        let processPriority = parseInt(cpu.children[i].children[0].textContent)
+        let processPriority = parseInt(prioritys[i].textContent)
         if(processPriority < priority){
           priority = processPriority
           index = i
@@ -91,6 +93,51 @@ async function Algorithm(method){
       if(await runProcess(index,100,time)){
         updateCount(++count)
       }
+    }
+  }
+  else if(method == "sg"){
+    while(cpu.children.length > 1){
+      for(let i = 0; i<cpu.children.length;i++){
+      let scalation = Math.floor(100/cpu.children.length)
+        await runProcess(i,scalation,time)
+      }
+    }
+  }
+  else if(method == "ff"){
+    while(cpu.children.length > 1){
+      for (let i = 0; i < cpu.children.length; i++) {
+        let process = document.getElementsByClassName("progress-bar")[i]
+        if(process.style.cssText.includes("darkmagenta")){
+          await runProcess(i,100,time)
+          break
+        }
+      }
+
+      for (let i = 0; i < cpu.children.length; i++) {
+        let process = document.getElementsByClassName("progress-bar")[i]
+        if(!process.style.cssText.includes("darkmagenta")){
+          await runProcess(i,100,time)
+          break
+        }
+      }
+    }
+  }
+
+
+
+  else if(method == "lt"){
+    while(cpu.children.length > 1){
+      let arrayDeBilhetes = []
+      for(let i = 0; i < cpu.children.length; i++){
+        let qtdBilhete = (document.getElementsByClassName("bilhete")[i].textContent)
+        for(let j = 0; j < parseInt(qtdBilhete) ; j++){
+          arrayDeBilhetes.push(i)    
+        }
+      }
+      
+      let sorted = arrayDeBilhetes[Math.floor(Math.random()*arrayDeBilhetes.length)];
+      await runProcess(sorted,100,time)
+      updateCount(++count)
     }
   }
 }
