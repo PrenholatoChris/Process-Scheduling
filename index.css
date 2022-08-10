@@ -1,0 +1,143 @@
+body{
+    background-color: black;
+}
+
+header{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.titulo h1{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: xx-large;
+    color: white;
+}
+
+.assunto h2{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: x-large;
+    color: white;
+}
+
+.extra h4{
+    font-family: Arial, Helvetica, sans-serif;
+    padding-right: 10%;
+    text-align: end;
+    color: white;
+}
+
+.conteiner{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 4%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card{
+    background-color: rgb(52, 52, 52);
+    width: 300px;
+    height: 360px;
+    display: grid;
+    place-items: center;
+    position: relative;
+    border-radius: 10px;
+    margin: 16px;
+}
+
+.card::before{
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 308px;
+    height: 368px;
+    border-radius: 10px;
+    background: linear-gradient(#1e9600, #fff200, #ff0000);
+    z-index: -1;
+    animation: animate 3s linear infinite;
+}
+
+@keyframes animate{
+    0%{
+        filter: hue-rotate(0deg) brightness(100%) blur(10px);
+    }
+    100%{
+        filter: hue-rotate(360deg) brightness(100%) blur(10px);
+    }
+}
+
+.foto{
+    width: 100%;
+    height: 250px;
+}
+
+.foto img{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.descrição{
+    width: 100%;
+}
+
+.name{
+    background-color: rgb(54, 54, 54);
+    display: flex;
+    width: 100%;
+    height: 50%;
+    align-items: center;
+}
+.name h2{
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+.icons{
+    background-color: rgb(54, 54, 54);
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.l1 img{
+    width: 100%;
+    height: 40px;
+    object-fit: cover;
+}
+.l2 img{
+    width: 100%;
+    height: 30px;
+    object-fit: cover;
+}
+.l3 img{
+    width: 100%;
+    height: 40px;
+    object-fit: cover;
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+}
+
+footer button{
+    background-color: rgb(54, 54, 54);
+    border-radius: 5px;
+}
+
+footer button a{
+    color: white;
+    text-decoration: none;
+}
